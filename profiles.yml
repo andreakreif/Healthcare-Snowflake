@@ -1,0 +1,13 @@
+healthcare_snowflake:          # must match profile: in dbt_project.yml
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"    # e.g. abc12345.us-east-1 or orgname-accountname
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: ACCOUNTADMIN
+      warehouse: TRANSFORMING
+      database: health_analytics
+      schema: dbt
+      threads: 4

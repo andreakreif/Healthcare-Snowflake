@@ -5,3 +5,4 @@ target/
 .env
 synthea_raw_csv/
 .venv/
+.user.yml
