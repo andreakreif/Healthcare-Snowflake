@@ -11,7 +11,7 @@ with source as (
 
 renamed as (    
 	select 
-        {{dbt_utils.generate_surrogate_key(['date','patient','encounter','code','value'])}} as observation_id,
+        {{dbt_utils.generate_surrogate_key(['date_ts','patient','encounter','code','value'])}} as observation_id,
         date_ts as observation_date,
         patient as patient_id,
         encounter as encounter_id,
