@@ -1,7 +1,7 @@
 /* 
   NOTE:  The source data was de-duped in Excel to get the uniqueness to work.
       This is reasonable since in a real world scenario, this would be handled outside
-      the scope of dbt.
+      the scope of dbt during the data loading process.
 */
 with source as (
 	select *
@@ -12,7 +12,7 @@ with source as (
 renamed as (    
 	select 
         {{dbt_utils.generate_surrogate_key(['date','patient','encounter','code','value'])}} as observation_id,
-        date as observation_date,
+        date_ts as observation_date,
         patient as patient_id,
         encounter as encounter_id,
         code as observation_code,
