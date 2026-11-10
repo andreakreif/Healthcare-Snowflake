@@ -1,19 +1,21 @@
 
 
 SET MY_DB=HEALTH_ANALYTICS
-SET MY_SCHEMA=DBT_AREIF_RAW
-SET DATA_DIR=C:/Users/oakwo/Documents/Portfolio_Project/CBP_analysis/synthea_raw_csv/csv
+SET MY_SCHEMA=DBT_RAW
+SET DATA_DIR=C:/Users/oakwo/Documents/Portfolio_Project/Healthcare-Snowflake/synthea_raw_csv/csv
+SET CLI_DIR=C:/Program Files/Snowflake CLI
+SET CONNECTION="snowflake_trial"
 SET DELETE_FIRST=1
 
-"C:/Program Files/Snowflake CLI/snow" sql -c snowflake_trial -f load_files.sql ^
+"%CLI_DIR%/snow" sql -c %CONNECTION% -f ./load_files.sql ^
   -D db=%MY_DB% ^
   -D schema=%MY_SCHEMA% ^
-  -D table=CONDITIONS ^
+  -D table=RAW_CONDITIONS ^
   -D local_file=%DATA_DIR%/conditions.csv ^
   -D file_name=conditions.csv^
   -D delete_first=%DELETE_FIRST%
 
-"C:/Program Files/Snowflake CLI/snow" sql -c snowflake_trial -f load_files.sql ^
+"%CLI_DIR%/snow" sql -c %CONNECTION% -f load_files.sql ^
   -D db=%MY_DB% ^
   -D schema=%MY_SCHEMA% ^
   -D table=RAW_ENCOUNTERS ^
@@ -21,7 +23,7 @@ SET DELETE_FIRST=1
   -D file_name=encounters.csv^
   -D delete_first=%DELETE_FIRST%
 
-"C:/Program Files/Snowflake CLI/snow" sql -c snowflake_trial -f load_files.sql ^
+"%CLI_DIR%/snow" sql -c %CONNECTION% -f load_files.sql ^
   -D db=%MY_DB% ^
   -D schema=%MY_SCHEMA% ^
   -D table=RAW_OBSERVATIONS ^
@@ -29,7 +31,7 @@ SET DELETE_FIRST=1
   -D file_name=observations.csv^
   -D delete_first=%DELETE_FIRST%
 
-"C:/Program Files/Snowflake CLI/snow" sql -c snowflake_trial   -f load_files.sql ^
+"%CLI_DIR%/snow" sql -c %CONNECTION%   -f load_files.sql ^
   -D db=%MY_DB% ^
   -D schema=%MY_SCHEMA% ^
   -D table=RAW_ORGANIZATIONS ^
@@ -37,7 +39,7 @@ SET DELETE_FIRST=1
   -D file_name=organizations.csv^
   -D delete_first=%DELETE_FIRST%
 
-"C:/Program Files/Snowflake CLI/snow" sql -c snowflake_trial -f load_files.sql ^
+"%CLI_DIR%/snow" sql -c %CONNECTION% -f load_files.sql ^
   -D db=%MY_DB% ^
   -D schema=%MY_SCHEMA% ^
   -D table=RAW_PATIENTS ^
@@ -45,7 +47,7 @@ SET DELETE_FIRST=1
   -D file_name=patients.csv^
   -D delete_first=%DELETE_FIRST%
 
-"C:/Program Files/Snowflake CLI/snow" sql -c snowflake_trial -f load_files.sql ^
+"%CLI_DIR%/snow" sql -c %CONNECTION% -f load_files.sql ^
   -D db=%MY_DB% ^
   -D schema=%MY_SCHEMA% ^
   -D table=RAW_PAYERS ^
@@ -54,7 +56,7 @@ SET DELETE_FIRST=1
     -D delete_first=%DELETE_FIRST%
 
 
-"C:/Program Files/Snowflake CLI/snow" sql -c snowflake_trial -f load_files.sql ^
+"%CLI_DIR%/snow" sql -c %CONNECTION%     -f load_files.sql ^
   -D db=%MY_DB% ^
   -D schema=%MY_SCHEMA% ^
   -D table=RAW_PROVIDERS ^

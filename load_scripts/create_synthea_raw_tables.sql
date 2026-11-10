@@ -1,6 +1,6 @@
 -- =============================================================================
 -- Synthea sample data (Apr 2020 CSV export) - raw table DDL for Snowflake
--- Target: HEALTH_ANALYTICS.DBT_AREIF_RAW
+-- Target: HEALTH_ANALYTICS.DBT_RAW
 --
 -- Notes
 --   * Synthea timestamps look like 2010-01-23T17:45:28Z (UTC). They are stored
@@ -11,9 +11,15 @@
 --   * PRIMARY KEY constraints are informational only in Snowflake (not enforced).
 --   * Empty CSV fields load as NULL via NULL_IF / EMPTY_FIELD_AS_NULL.
 -- =============================================================================
-
+--setting default database and warehouse so the create statements can run
+USE DATABASE SNOWFLAKE;
+USE WAREHOUSE COMPUTE_WH
+CREATE DATABASE IF NOT EXISTS HEALTH_ANALYTICS;
+CREATE WAREHOUSE IF NOT EXISTS TRANSFORMING;
+CREATE SCHEMA IF NOT EXISTS DBT_RAW;  
+USE WAREHOUSE TRANSFORMING;
 USE DATABASE HEALTH_ANALYTICS;
-USE SCHEMA DBT_AREIF_RAW;
+USE SCHEMA DBT_RAW;
 
 -- File format for all Synthea CSVs
 CREATE FILE FORMAT IF NOT EXISTS SYNTHEA_CSV_FORMAT
