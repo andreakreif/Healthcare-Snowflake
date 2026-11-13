@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: fct_encounter
+    description: Encounters, one record per encounter
+    columns:
+    - name: encounter_id
+      description: primary key for table
+      data_tests:
+        - not_null
+        - unique
+    - name: patient_id
+      description: foreign key to dim_patient table
+      data_tests:
+        - not_null
+        - relationships:
+            to: ref('dim_patient')
+            field: patient_id
+    - name: provider_id
+      description: foreign key to dim_provider table
+      data_tests:
+        - not_null
+        - relationships:
+            to: ref('dim_provider')
+            field: provider_id  
+    - name: organization_id
+      description: foreign key to dim_organization table
+      data_tests:
+        - not_null
+        - relationships:
+            to: ref('dim_organization')
+            field: organization_id
+    - name: payer_id
+      description: foreign key to dim_payer table
+      data_tests:
+        - not_null
+        - relationships:
+            to: ref('dim_payer')
+            field: payer_id 
+    - name: encounter_date_key
+      description: date of encounter
+      data_tests:
+        - not_null
+    - name: encounter_type_key
+      description: type of encounter (e.g., outpatient, inpatient) and reason
+      data_tests:
+        - not_null
+        - relationships:
+            to: ref('dim_encounter_type')
+            field: encounter_type_key 
+    

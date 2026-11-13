@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: fct_condition
+    description: Conditions, one record per condition
+    columns:
+    - name: condition_id
+      description: primary key for table
+      data_tests:
+        - not_null
+        - unique
+    - name: patient_id
+      description: foreign key to dim_patient table
+      data_tests:
+        - not_null
+        - relationships:
+            to: ref('dim_patient')
+            field: patient_id
+    - name: encounter_id
+      description: foreign key to fct_encounter table
+      data_tests:
+        - not_null
+        - relationships:
+            to: ref('fct_encounter')
+            field: encounter_id
+    - name: condition_code_key
+      description: foreign key to dim_code table
+      data_tests:
+        - not_null
+        - relationships:
+            to: ref('dim_code')
+            field: code_key
+    - name: start_date_key
+      description: start date of condition foreign key to dim_date table
+      data_tests:
+        - not_null
+        - relationships:
+            to: ref('dim_date')
+            field: date_key
+    - name: end_date_key
+      description: foreign key to dim_date table,99991231 if no end date in source data
+      data_tests:
+        - not_null
+        - relationships:
+            to: ref('dim_date')
+            field: date_key
+    
