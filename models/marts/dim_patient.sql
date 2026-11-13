@@ -1,5 +1,6 @@
 SELECT 
     patient_id,
+    patient_full_name,
     patient_birthdate,
     patient_deathdate,
     patient_race,           
