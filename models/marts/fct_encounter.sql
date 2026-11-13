@@ -4,6 +4,7 @@ SELECT encounter_id,
     patient_id, 
     provider_id, 
     organization_id,
+    payer_id,
     base_encounter_cost,
     total_claim_cost,
     payer_coverage AS payer_coverage_amount,
@@ -11,4 +12,4 @@ SELECT encounter_id,
     reason_description
 FROM {{ ref('stg_encounters') }}
 LEFT JOIN {{ ref('dim_encounter_type') }} 
-USING(encounter_class, encounter_code, encounter_description)
+USING(encounter_class, encounter_code)

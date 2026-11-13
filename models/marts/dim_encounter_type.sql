@@ -16,7 +16,7 @@ with source_types as (
 mapped as (
 
     select
-        {{ dbt_utils.generate_surrogate_key(['s.encounter_class', 's.encounter_code']) }}
+        s.encounter_class || '_' || s.encounter_code
                                        as encounter_type_key,
         s.encounter_class,
         s.encounter_code,

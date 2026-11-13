@@ -1,4 +1,5 @@
-SELECT patient_id,
+SELECT condition_id,
+    patient_id,
     encounter_id,
     code_key AS condition_code_key,
     TO_CHAR(start_dt, 'YYYYMMDD')::INT AS start_date_key,
