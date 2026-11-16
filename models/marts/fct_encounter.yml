@@ -36,9 +36,13 @@ models:
         - not_null
         - relationships:
             to: ref('dim_payer')
-            field: payer_id 
+            field: payer_id
     - name: encounter_date_key
       description: date of encounter
+      data_tests:
+        - not_null
+    - name: encounter_year
+      description: year of encounter
       data_tests:
         - not_null
     - name: encounter_type_key

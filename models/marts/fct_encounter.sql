@@ -1,5 +1,6 @@
 SELECT encounter_id, 
     TO_CHAR(start_ts, 'YYYYMMDD')::INT  AS encounter_date_key, 
+    TO_CHAR(start_ts, 'YYYY')::INT  AS encounter_year,
     encounter_type_key,     
     patient_id, 
     provider_id, 

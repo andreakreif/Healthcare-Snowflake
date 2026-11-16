@@ -44,4 +44,13 @@ models:
         - relationships:
             to: ref('dim_date')
             field: date_key
+    - name: condition_start_year
+      description: year of condition start
+      data_tests:
+        - not_null
+    - name: condition_end_year
+      description: year of condition end, 9999 if no end date in source data
+      data_tests:
+        - not_null
+
     
