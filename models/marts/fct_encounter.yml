@@ -52,4 +52,12 @@ models:
         - relationships:
             to: ref('dim_encounter_type')
             field: encounter_type_key 
+    - name: age_at_encounter
+      description: age of patient at encounter
+      data_tests:
+        - not_null
+    - name: age_at_year_end
+      description: age of patient at the end of the year
+      data_tests:
+        - not_null
     
